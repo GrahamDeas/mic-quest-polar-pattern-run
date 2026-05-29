@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "manufacturer": "Shure",
+    "model": "SM58",
+    "type": "Dynamic",
+    "polar": "Cardioid",
+    "mnemonic": "Ball grille = vocal stage classic. SM58s are dynamic cardioid vocal mics.",
+    "use": "Live vocals, guide vocals, rehearsal rooms.",
+    "image": "assets/microphones/01_Shure_SM58.jpg"
+  },
+  {
+    "id": 5,
+    "manufacturer": "Shure",
+    "model": "SM57",
+    "type": "Dynamic",
+    "polar": "Cardioid",
+    "mnemonic": "No ball grille, small silver end = the instrument workhorse.",
+    "use": "Snare drum, guitar amps, brass, general instruments.",
+    "image": "assets/microphones/05_Shure_SM57.jpg"
+  },
+  {
+    "id": 3,
+    "manufacturer": "AKG",
+    "model": "D112",
+    "type": "Dynamic",
+    "polar": "Cardioid",
+    "mnemonic": "The chunky egg-shaped kick drum mic with the coloured ring.",
+    "use": "Kick drum, bass cabinet, low-frequency sources.",
+    "image": "assets/microphones/03_AKG_D112.jpg"
+  },
+  {
+    "id": 4,
+    "manufacturer": "Sennheiser",
+    "model": "E606",
+    "type": "Dynamic",
+    "polar": "Supercardioid",
+    "mnemonic": "Flat side-address guitar cab mic. It can hang in front of an amp.",
+    "use": "Electric guitar cabinets, percussion, brass.",
+    "image": "assets/microphones/04_Sennheiser_E606.jpg"
+  },
+  {
+    "id": 2,
+    "manufacturer": "Sennheiser",
+    "model": "MD421",
+    "type": "Dynamic",
+    "polar": "Cardioid",
+    "mnemonic": "Long black body with the distinctive clip collar: a studio dynamic classic.",
+    "use": "Toms, guitar amps, brass, broadcast voice.",
+    "image": "assets/microphones/02_Sennheiser_MD421.jpg"
+  },
+  {
+    "id": 6,
+    "manufacturer": "Beyerdynamic",
+    "model": "OPUS 65",
+    "type": "Dynamic",
+    "polar": "Hypercardioid",
+    "mnemonic": "Large white/silver grille and body: Beyerdynamic bass/instrument dynamic.",
+    "use": "Kick drum, percussion and loud instruments.",
+    "image": "assets/microphones/06_Beyerdynamic_OPUS_65.jpg"
+  },
+  {
+    "id": 7,
+    "manufacturer": "Beyerdynamic",
+    "model": "M201",
+    "type": "Dynamic",
+    "polar": "Hypercardioid",
+    "mnemonic": "Slim black pencil-style dynamic: precise, tight pickup.",
+    "use": "Snare, guitar amps, acoustic instruments, brass.",
+    "image": "assets/microphones/07_Beyerdynamic_M201.jpg"
+  },
+  {
+    "id": 8,
+    "manufacturer": "AKG",
+    "model": "C414",
+    "type": "Condenser",
+    "polar": "Multi-pattern: Omni / Cardioid / Hypercardioid / Figure-8",
+    "mnemonic": "Black rectangular AKG body with pattern switches = the flexible C414.",
+    "use": "Vocals, drum overheads, acoustic guitar, piano, room mics.",
+    "image": "assets/microphones/08_AKG_C414.jpg"
+  },
+  {
+    "id": 9,
+    "manufacturer": "Neumann",
+    "model": "U87",
+    "type": "Condenser",
+    "polar": "Multi-pattern: Omni / Cardioid / Figure-8",
+    "mnemonic": "Large classic Neumann in a shock mount: three-pattern studio icon.",
+    "use": "Vocals, voiceover, piano, strings, room capture.",
+    "image": "assets/microphones/09_Neumann_U87.jpg"
+  },
+  {
+    "id": 10,
+    "manufacturer": "Neumann",
+    "model": "TLM103",
+    "type": "Condenser",
+    "polar": "Cardioid",
+    "mnemonic": "Looks U87-ish but simpler: transformerless cardioid condenser.",
+    "use": "Vocals, spoken word, acoustic instruments.",
+    "image": "assets/microphones/10_Neumann_TLM103.jpg"
+  },
+  {
+    "id": 11,
+    "manufacturer": "AKG",
+    "model": "C3000",
+    "type": "Condenser",
+    "polar": "Cardioid",
+    "mnemonic": "Rounded AKG body with a red band: fixed cardioid studio condenser.",
+    "use": "Vocals, acoustic guitar, overheads, brass.",
+    "image": "assets/microphones/11_AKG_C3000.jpg"
+  },
+  {
+    "id": 13,
+    "manufacturer": "Neumann",
+    "model": "KM184",
+    "type": "Condenser",
+    "polar": "Cardioid",
+    "mnemonic": "Small Neumann pencil condenser: 184 = cardioid.",
+    "use": "Acoustic guitar, piano, drum overheads, spot mics.",
+    "image": "assets/microphones/13_Neumann_KM184.jpg"
+  },
+  {
+    "id": 12,
+    "manufacturer": "Neumann",
+    "model": "KM183",
+    "type": "Condenser",
+    "polar": "Omnidirectional",
+    "mnemonic": "Small Neumann pencil condenser: 183 = omni.",
+    "use": "Room, ambience, stereo pairs, natural acoustic capture.",
+    "image": "assets/microphones/12_Neumann_KM183.jpg"
+  },
+  {
+    "id": 14,
+    "manufacturer": "Oktava",
+    "model": "MK012",
+    "type": "Condenser",
+    "polar": "Interchangeable capsules: Omni / Cardioid / Hypercardioid",
+    "mnemonic": "Short modular pencil condenser with interchangeable capsules.",
+    "use": "Acoustic instruments, overheads, stereo techniques.",
+    "image": "assets/microphones/14_Oktava_MK012.jpg"
+  },
+  {
+    "id": 15,
+    "manufacturer": "Audio Technica",
+    "model": "AT4050",
+    "type": "Condenser",
+    "polar": "Multi-pattern: Omni / Cardioid / Figure-8",
+    "mnemonic": "Large black side-address Audio Technica condenser with switchable patterns.",
+    "use": "Vocals, overheads, piano, acoustic instruments, room.",
+    "image": "assets/microphones/15_Audio_Technica_AT4050.jpg"
+  }
+]
