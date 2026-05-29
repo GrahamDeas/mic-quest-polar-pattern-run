@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mic Quest: Polar Pattern Run</title>
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <main class="app">
+    <section id="homeScreen" class="screen screen-home is-active" aria-labelledby="homeTitle">
+      <div class="home-main">
+        <div class="title-lockup">
+          <p class="eyebrow">Fife College Sound Production</p>
+          <h1 id="homeTitle">Mic Quest:<br>Polar Pattern Run</h1>
+          <p class="subtitle">Run the stage, jump the amps, and identify each microphone by manufacturer, model, type and polar pattern.</p>
+        </div>
+
+        <div class="mode-grid" aria-label="Game modes">
+          <button class="mode-button mode-test" type="button" data-mode="test">
+            <span>Test All 15 Mics</span>
+            <small>Fixed-order revision run</small>
+          </button>
+          <button class="mode-button mode-arcade" type="button" data-mode="arcade">
+            <span>Arcade Run</span>
+            <small>3-minute classroom challenge</small>
+          </button>
+          <button class="mode-button mode-practice" type="button" data-mode="practice">
+            <span>Practice Run</span>
+            <small>No time pressure, self-paced run</small>
+          </button>
+          <button class="mode-button mode-flash" type="button" id="openFlashcardsButton">
+            <span>Flashcards</span>
+            <small>Tap to reveal each answer</small>
+          </button>
+        </div>
+      </div>
+
+      <aside class="home-side" aria-label="Classroom setup">
+        <section class="panel how-panel">
+          <h2>How to Play</h2>
+          <p>Move with <b>Right Arrow</b> or <b>D</b>. Jump with <b>Space</b>, <b>Up Arrow</b> or <b>W</b>. Each mic checkpoint is worth four points.</p>
+          <div class="score-cells" aria-label="Scoring">
+            <div><strong>15</strong><span>mics</span></div>
+            <div><strong>4</strong><span>points each</span></div>
+            <div><strong>60</strong><span>total</span></div>
+          </div>
+        </section>
+
+        <section class="panel setup-panel">
+          <h2>Online Leaderboard</h2>
+          <p>Supabase can be supplied by Vercel automatically. Use team names or first names only.</p>
+          <label for="leaderboardUrlInput">Supabase Project URL</label>
+          <input id="leaderboardUrlInput" type="url" autocomplete="off" placeholder="https://example.supabase.co">
+          <label for="leaderboardKeyInput">Supabase anon/publishable key</label>
+          <input id="leaderboardKeyInput" type="password" autocomplete="off" spellcheck="false" placeholder="Never use the service role key">
+          <div class="setup-actions">
+            <button class="small-button primary" type="button" id="saveLeaderboardUrlButton">Save Settings</button>
+            <button class="small-button ghost" type="button" id="clearLeaderboardUrlButton">Local Only</button>
+          </div>
+          <p class="status-chip is-local" id="leaderboardConfigStatus">Leaderboard: local browser only</p>
+        </section>
+      </aside>
+    </section>
+
+    <section id="gameScreen" class="screen screen-game" aria-labelledby="gameTitle">
+      <header class="game-header">
+        <div>
+          <p class="eyebrow compact">Mic Quest</p>
+          <h2 id="gameTitle"><span id="modeLabel">Practice Run</span></h2>
+        </div>
+        <div class="hud" aria-label="Run statistics">
+          <div class="hud-item"><span>Score</span><strong id="scoreLabel">0/60</strong></div>
+          <div class="hud-item"><span>Mic</span><strong id="checkpointCounter">1/15</strong></div>
+          <div class="hud-item"><span>Streak</span><strong id="streakLabel">0</strong></div>
+          <div class="hud-item"><span>Timer</span><strong id="timerLabel">00:00</strong></div>
+        </div>
+      </header>
+
+      <div class="stage-shell">
+        <div class="game-viewport" id="gameViewport" aria-label="Side-scrolling stage world">
+          <div class="world" id="world">
+            <div class="backdrop-stars" aria-hidden="true"></div>
+            <div class="rig rig-a" aria-hidden="true"></div>
+            <div class="rig rig-b" aria-hidden="true"></div>
+            <div class="speaker-stack speaker-left" aria-hidden="true"></div>
+            <div class="speaker-stack speaker-right" aria-hidden="true"></div>
+            <div class="stage-floor" aria-hidden="true"></div>
+          </div>
+          <div class="player" id="player" aria-label="Heavy metal fan with Flying V guitar">
+            <img class="player-sprite" src="assets/sprites/heavy-metal-dude.png" alt="">
+          </div>
+          <div class="impact-text" id="impactText" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <footer class="game-controls">
+        <div class="control-copy">
+          <p id="runnerPrompt" class="runner-prompt">Press Move to start running towards the first microphone.</p>
+          <div class="key-controls" aria-label="Keyboard controls">
+            <span aria-label="Run controls: Right Arrow or D"><strong>Run</strong> <em>:</em> <kbd>Right Arrow</kbd> <em>or</em> <kbd>D</kbd></span>
+            <span aria-label="Jump controls: Space, Up Arrow or W"><strong>Jump</strong> <em>:</em> <kbd>Space</kbd> <em>or</em> <kbd>Up Arrow</kbd> <em>or</em> <kbd>W</kbd></span>
+          </div>
+        </div>
+        <div class="control-buttons">
+          <button class="control-button move" type="button" id="moveButton">Move →</button>
+          <button class="control-button jump" type="button" id="jumpButton">Jump</button>
+          <button class="control-button mute" type="button" id="muteButton" aria-pressed="false">Sound On</button>
+          <button class="control-button quit" type="button" id="quitRunButton">Quit Run</button>
+        </div>
+      </footer>
+    </section>
+
+    <section id="flashcardScreen" class="screen screen-flashcards" aria-labelledby="flashcardTitle">
+      <header class="section-header">
+        <div>
+          <p class="eyebrow compact">Revision Deck</p>
+          <h2 id="flashcardTitle">Flashcards</h2>
+        </div>
+        <div class="section-actions">
+          <button class="small-button ghost" type="button" id="shuffleFlashcardsButton">Shuffle</button>
+          <button class="small-button primary" type="button" data-home>Home</button>
+        </div>
+      </header>
+      <div id="flashcardGrid" class="flashcard-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="endScreen" class="screen screen-end" aria-labelledby="endTitle">
+      <section class="end-summary panel">
+        <p class="eyebrow compact">Run Complete</p>
+        <h2 id="endTitle">Score Saved?</h2>
+        <p id="endSummary">Final score: 0/60.</p>
+        <div id="badgeList" class="badge-list" aria-label="Badges"></div>
+        <div class="save-row">
+          <label for="playerNameInput">Team or first name</label>
+          <input id="playerNameInput" type="text" maxlength="40" autocomplete="off" placeholder="e.g. Desk 3">
+          <button class="small-button primary" type="button" id="saveScoreButton">Save Score</button>
+        </div>
+        <div class="end-actions">
+          <button class="small-button mode-test" type="button" data-mode="test">Test Again</button>
+          <button class="small-button mode-arcade" type="button" data-mode="arcade">Arcade Again</button>
+          <button class="small-button ghost" type="button" data-home>Home</button>
+        </div>
+      </section>
+
+      <section class="leaderboard panel" aria-labelledby="leaderboardTitle">
+        <div class="leaderboard-head">
+          <h2 id="leaderboardTitle">Leaderboard</h2>
+          <button class="small-button ghost" type="button" id="refreshLeaderboardButton">Refresh</button>
+        </div>
+        <p class="status-chip is-local" id="leaderboardStatus">Local leaderboard</p>
+        <div id="leaderboardList" class="leaderboard-list"></div>
+      </section>
+    </section>
+  </main>
+
+  <div class="quiz-backdrop" id="quizModal" role="dialog" aria-modal="true" aria-labelledby="quizTitle" hidden>
+    <article class="quiz-panel" id="quizPanel">
+      <section class="quiz-media">
+        <p class="eyebrow compact" id="quizCheckpointLabel">Checkpoint 1 / 15</p>
+        <div class="quiz-image-box">
+          <img id="quizImage" alt="Microphone to identify">
+        </div>
+      </section>
+
+      <section class="quiz-content">
+        <header class="quiz-heading">
+          <h2 id="quizTitle">Identify this microphone</h2>
+          <p>Pick one answer in each row. Every correct row is worth one point.</p>
+        </header>
+        <div id="questionGrid" class="question-grid"></div>
+        <div id="quizFeedback" class="quiz-feedback" aria-live="polite"></div>
+        <footer class="quiz-actions">
+          <button class="small-button quit" type="button" id="quitFromQuizButton">Quit Run</button>
+          <button class="small-button ghost" type="button" id="revealButton">Reveal Answer</button>
+          <button class="small-button primary" type="button" id="checkAnswersButton">Check Answers</button>
+          <button class="small-button mode-practice" type="button" id="continueRunButton" disabled>Continue Run</button>
+        </footer>
+      </section>
+    </article>
+  </div>
+
+  <template id="flashcardTemplate">
+    <button class="flashcard" type="button">
+      <span class="flashcard-inner">
+        <span class="flashcard-face flashcard-front">
+          <span class="flashcard-image"><img alt=""></span>
+          <span class="flashcard-prompt">Tap to reveal</span>
+        </span>
+        <span class="flashcard-face flashcard-back">
+          <span class="flashcard-answer"></span>
+        </span>
+      </span>
+    </button>
+  </template>
+
+  <script defer src="src/app.js"></script>
+</body>
+</html>
